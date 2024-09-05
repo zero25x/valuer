@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lista Zapytań</title>
+</head>
+<body>
+    <h1>Lista Zapytań</h1>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Pracownik Dodający</th>
+                <th>Data Dodania</th>
+                <th>Potencjalne Zapytanie</th>
+                <th>Tekst</th>
+                <th>Klient ID</th>
+                <th>Akcje</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="zapytanie : ${zapytania}">
+                <td th:text="${zapytanie.id}"></td>
+                <td th:text="${zapytanie.employeeAdded}"></td>
+                <td th:text="${zapytanie.dateAdded}"></td>
+                <td th:text="${zapytanie.isPotential}"></td>
+                <td th:text="${zapytanie.text}"></td>
+                <td th:text="${zapytanie.klient.id}"></td>
+                <td>
+                    <a th:href="@{/zapytanie/delete/{id}(id=${zapytanie.id})}" onclick="return confirm('Czy na pewno chcesz usunąć to zapytanie?')">Usuń</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="/zapytanie/form">Dodaj Nowe Zapytanie</a>
+</body>
+</html>

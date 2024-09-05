@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Klienci List</title>
+</head>
+<body>
+    <h1>Lista Klientów</h1>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Address</th>
+                <th>VAT Number</th>
+                <th>Employee Calls</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="klient : ${klienci}">
+                <td th:text="${klient.id}"></td>
+                <td th:text="${klient.name}"></td>
+                <td th:text="${klient.address}"></td>
+                <td th:text="${klient.vatNumber}"></td>
+                <td th:text="${klient.employeeCalls}"></td>
+                <td>
+                    <a th:href="@{/client/delete/{id}(id=${klient.id})}" onclick="return confirm('Czy na pewno chcesz usunąć tego klienta?')">Usuń</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="/">Powrót do strony głównej</a>
+</body>
+</html>

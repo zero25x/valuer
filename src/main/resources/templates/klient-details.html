@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Detale Klienta</title>
+</head>
+<body>
+
+<h1>Detale Klienta</h1>
+
+<div>
+    <p><strong>Nazwa:</strong> <span th:text="${klient.name}"></span></p>
+    <p><strong>Adres:</strong> <span th:text="${klient.address}"></span></p>
+    <p><strong>Numer VAT:</strong> <span th:text="${klient.vatNumber}"></span></p>
+</div>
+
+<h2>Karty Klienta</h2>
+<table border="1">
+    <thead>
+        <tr>
+            <th>Symbol Subiekt</th>
+            <th>Numer Karty</th>
+            <th>Cena Zakupu</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="karta : ${karty}">
+            <td th:text="${karta.symbolSubiekt}"></td>
+            <td th:text="${karta.numerKarty}"></td>
+            <td th:text="${karta.cenaZakupu}"></td>
+        </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

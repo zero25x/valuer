@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Powiąż Klienta z Kartą</title>
+</head>
+<body>
+
+<h1>Powiąż Klienta z Kartą</h1>
+
+<form th:action="@{/klientKarta}" th:object="${klientKarta}" method="post">
+    <label for="klient">Wybierz Klienta:</label>
+    <select th:field="*{klient}">
+        <option th:each="klient : ${klienci}" th:value="${klient.id}" th:text="${klient.name}"></option>
+    </select>
+    <br/>
+
+    <label for="karta">Wybierz Kartę:</label>
+    <select th:field="*{karta}">
+        <option th:each="karta : ${karty}" th:value="${karta.id}" th:text="${karta.numerKarty}"></option>
+    </select>
+    <br/>
+
+    <label for="cenaSprzedazy">Cena Sprzedaży:</label>
+    <input type="text" th:field="*{cenaSprzedazy}"/>
+    <br/>
+
+    <button type="submit">Zapisz</button>
+</form>
+
+</body>
+</html>

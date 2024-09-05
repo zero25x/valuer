@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Zapytanie Form</title>
+</head>
+<body>
+    <h1>Dodaj Nowe Zapytanie</h1>
+
+    <form action="#" th:action="@{/zapytanie/save}" th:object="${zapytanie}" method="post">
+        <label for="employeeAdded">Pracownik Dodający:</label>
+        <input type="text" id="employeeAdded" th:field="*{employeeAdded}" required/><br/>
+
+        <label for="isPotential">Potencjalne Zapytanie:</label>
+        <input type="text" id="isPotential" th:field="*{isPotential}" required/><br/>
+
+        <label for="text">Tekst Zapytania:</label>
+        <textarea id="text" th:field="*{text}" required></textarea><br/>
+
+        <!-- Dodaj pole do wyboru klienta, jeśli chcesz powiązać zapytanie z klientem -->
+        <label for="klient">Klient:</label>
+        <input type="text" id="klient" th:field="*{klient.id}" placeholder="Klient ID"/><br/>
+
+        <button type="submit">Zapisz Zapytanie</button>
+    </form>
+
+    <a href="/zapytanie/zapytania">Zobacz Listę Zapytań</a>
+</body>
+</html>
